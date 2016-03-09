@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+}
+
+p{
+    margin: 5px;
+}
+
+input{
+    height: 30px;
+    width: 75%;
+    font-size: 18px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+    height: 100px;
+    background: #fff;
+    border-bottom: 1px solid black;
+}
+.wrapper-parallax {
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+.web-title {
+  background: #272928;
+  top: 0;
+  left: 0;
+  color: #efeff0;
+}
+.office-title {
+  background: #3b99cc;
+  top: 0;
+  right: 0;
+  color: #272928;
+}
+
+footer {
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+    bottom: 0;
+    background: green;
+    height: 200px;
+}
+
+.ifsc-row-one-column-one{
+    background: #D2D2D2;
+    position: absolute;
+    min-height: 180px;
+    width: 50%;
+}
+.ifsc-row-one-column-two{
+    background: #D2D2D2;
+    min-height: 180px;
+    position: relative;
+    float: right;
+    width: 50%;
+}
+.ifsc-search-container{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.ifsc-button{
+    position: relative;
+    bottom: 0px;
+}
