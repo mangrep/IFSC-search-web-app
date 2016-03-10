@@ -13,8 +13,11 @@ $(document).ready(function(){
             banks = data;
             localStorage.setItem("banks",data);
         }else{
-            alert("Please change the setting to load unsafe scripts ==> " +status);
+            alert("Please change the setting to load unsafe scripts");
         }
+    }).
+    fail(function() {
+        alert("Please change the setting to load unsafe scripts");
     });
     }else{
         banks = localStorage.getItem("banks").split(',');
