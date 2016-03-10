@@ -1,11 +1,11 @@
 var banks = [];
 var branches = [];
 var url = "http://techm.co.in:3000/api";
+var bankNameCheck;
 $(document).ready(function(){               
     
     
     // fetch the bank names if not found in localstorage
-    
     if(localStorage.getItem("banks") === null){
     $.get("http://techm.co.in:3000/api/listbranch",function(data) {
         banks = data;
@@ -14,8 +14,52 @@ $(document).ready(function(){
     }else{
         banks = localStorage.getItem("banks").split(',');
     }
-
     
+    
+    /*on Bank field focusout validate Bank field
+    match the focusin bank name and focusout bank name
+    if mot matched make a network call to get brach names*/
+    $("#ifsc_bank").focusout(function(){
+        $("#ifsc_branch").val("");
+        var bankName = $("#ifsc_bank").val();
+        if(bankName === ""){
+            $("#ifsc_branch").attr("readonly","readonly");
+            clearData();
+            return false;
+        }else{
+            $("#ifsc_branch").removeAttr("readonly");
+            clearData();
+        }
+        if(bankName != bankNameCheck){
+            $.get(url+"/bank/"+$("#ifsc_bank").val(),function(data) {
+                branches = data;
+            });
+        }
+    });
+    
+    // store the bank name on focusin
+    $("#ifsc_bank").focusin(function(){
+        bankNameCheck = $("#ifsc_bank").val();
+    });
+    
+    //jquery autocomplete on input for Bank Name
+    $("#ifsc_bank").on('input propertychange',function(){
+        $("#ifsc_bank").autocomplete({
+            source: banks,
+            minLength: 2
+        }); 
+    });
+    
+    //jquery autocomplete on input for Branch Name
+    $("#ifsc_branch").on('input propertychange',function(){
+        $("#ifsc_branch").autocomplete({
+            source: branches,
+            minLength: 2
+        }); 
+    });
+    
+
+    // Validate the fields and make a server call to get bank details 
     $("input[type=button]").click(function(){
         var bank = $("#ifsc_bank").val();
         var branch = $("#ifsc_branch").val();
@@ -46,34 +90,6 @@ $(document).ready(function(){
         });
     });
 
-    $("#ifsc_bank").focusout(function(){
-        $("#ifsc_branch").val("");
-        if($("#ifsc_bank").val() === ""){
-            $("#ifsc_branch").attr("readonly","readonly");
-            clearData();
-            return false;
-        }else{
-            $("#ifsc_branch").removeAttr("readonly");
-            clearData();
-        }
-        $.get(url+"/bank/"+$("#ifsc_bank").val(),function(data) {
-            branches = data;
-        });
-
-        });
-    $("#ifsc_bank").keyup(function(){
-        $("#ifsc_bank").autocomplete({
-            source: banks,
-            minLength: 2
-        }); 
-    });
-
-    $("#ifsc_branch").keyup(function(){
-        $("#ifsc_branch").autocomplete({
-            source: branches,
-            minLength: 2
-        }); 
-    });
 });
 
 
