@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+    <head>
+        <title>IFSC Generator</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="wrapper-parallax">
+    <header>
+        <h1>Bank Details</h1>
+    </header>    
+    <div class="content">
+        <div class="ifsc-row-one">
+            <!--<h1>Content</h1>-->
+            <div class="ifsc-row-one-column-one">
+                <div class="ifsc-search-container">
+                    <p>Bank Name</p>
+                    <input id="ifsc_bank" type="text" autocomplete="off" name="txtBranch" placeholder="Type here"/>
+                </div>
+            </div>
+            <div class="ifsc-row-one-column-two">
+                <div class="ifsc-search-container">
+                    <p>Branch Name</p>
+                    <input id="ifsc_branch" readonly type="text" autocomplete="off" name="txtBranch" placeholder="Type here"/>
+                </div>
+            </div>
+            <div class="ifsc-button-wrapper">
+                <div class="ifsc-button"><input type="button" value="GENERATE CODE"></div>
+            </div>
+        </div>
+        <div class="ifsc-row-two">
+            <div class="ifsc-row-two-column">
+                <h3>Bank</h3>
+                <h4 id="bank_name"></h4>
+            </div>
+            <div class="ifsc-row-two-column">
+                <h3>Address</h3>
+                <p id="bank_address"></p>
+                <p id="address_line_1"></p>
+                <p id="address_line_2"></p>
+                <p id="address_line_3"></p>
+            </div>
+            <div class="ifsc-row-two-column">
+                <h3>IFSC</h3>
+                <h4 id="ifsc_code"></h4>
+            </div>
+            <div class="ifsc-row-two-column">
+                <h3>MICR</h3>
+                <h4 id="bank_micr"></h4>
+            </div>
+        </div>
+    </div>
+    <footer>
+        
+    </footer>
+</div>
+        <script type="text/javascript" src="js/script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+}
+
+p{
+    margin: 5px;
+}
+
+input[type=text]{
+    height: 30px;
+    width: 75%;
+    font-size: 18px;
+}
+
+div.ifsc-button input{
+     width: 51%;
+    height: 50px;
+    border: 0px;
+    color: #fff;
+    background: #633A8C;
+    font-size: 24px;
+}
+
+div.ifsc-button input:active{
+    background: #3D2356;
+}
+
+
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+    height: 100px;
+    background: #fff;
+    border-bottom: 1px solid black;
+}
+
+header{
+    padding-left: 100px;
+}
+.wrapper-parallax {
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+footer {
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+    bottom: 0;
+    background: #D2D2D2;
+    height: 100px;
+}
+
+.ifsc-row-one{
+    background: #D2D2D2;
+    height: 200px;
+}
+
+.ifsc-row-one-column-one{
+    position: absolute;
+    min-height: 140px;
+    width: 50%;
+}
+.ifsc-row-one-column-two{
+    min-height: 140px;
+    position: relative;
+    float: right;
+    width: 50%;
+}
+.ifsc-search-container{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.ifsc-button{
+    text-align: center;
+}
+.ifsc-row-two-column{
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+
+.ifsc-row-two-column h3{
+    background: #ED91EF;
+    margin: 0px;
+    padding: 15px;
+}
