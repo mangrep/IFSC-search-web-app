@@ -7,9 +7,14 @@ $(document).ready(function(){
     
     // fetch the bank names if not found in localstorage
     if(localStorage.getItem("banks") === null){
-    $.get("http://techm.co.in:3000/api/listbranch",function(data) {
-        banks = data;
-        localStorage.setItem("banks",data);
+    $.get("http://techm.co.in:3000/api/listbranch",function(data,status) {
+        
+        if(status === "success"){
+            banks = data;
+            localStorage.setItem("banks",data);
+        }else{
+            alert("Please change the setting to load unsafe scripts ==> " +status);
+        }
     });
     }else{
         banks = localStorage.getItem("banks").split(',');
