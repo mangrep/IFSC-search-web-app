@@ -13,11 +13,11 @@ $(document).ready(function(){
             banks = data;
             localStorage.setItem("banks",data);
         }else{
-            alert("Please change the setting to load unsafe scripts");
+            alert("Sorry ! could not reach server...");
         }
     }).
     fail(function() {
-        alert("Please change the setting to load unsafe scripts");
+        alert("Check Your Internate Connection");
     });
     }else{
         banks = localStorage.getItem("banks").split(',');
