@@ -7,11 +7,12 @@ $(document).ready(function(){
     
     // fetch the bank names if not found in localstorage
     if(localStorage.getItem("banks") === null){
-    $.get("http://techm.co.in:3000/api/listbranch",function(data,status) {
+    $.get("http://techm.co.in:3000/api/listbanks",function(data,status) {
         
         if(status === "success"){
-            banks = data;
-            localStorage.setItem("banks",data);
+            banks = data.data;
+						//save in localstorege
+            localStorage.setItem("banks",data.data);
         }else{
             alert("Sorry ! could not reach server...");
         }
@@ -40,7 +41,7 @@ $(document).ready(function(){
         }
         if(bankName != bankNameCheck){
             $.get(url+"/bank/"+$("#ifsc_bank").val(),function(data) {
-                branches = data;
+                branches = data.data;
             });
         }
     });
@@ -87,14 +88,14 @@ $(document).ready(function(){
             alert("Enter Datails");
             return false;
         }
-        $.get(url+"/getbank/"+bank+"/"+branch,function(data) {
-            $("#bank_name").html(data[0].BANK);
-            $("#bank_address").html(data[0].BANK);
-            $("#address_line_1").html(data[0].CITY);
-            $("#address_line_2").html(data[0].DISTRICT);
-            $("#address_line_3").html(data[0].ADDRESS);
-            $("#ifsc_code").html(data[0].IFSC);
-            $("#bank_micr").html(data[0]['MICR CODE']);
+        $.get(url+"/getbank/"+bank+"/"+branch,function(res) {
+            $("#bank_name").html(res.data.BANK);
+            $("#bank_address").html(res.data.BANK);
+            $("#address_line_1").html(res.data.CITY);
+            $("#address_line_2").html(res.data.DISTRICT);
+            $("#address_line_3").html(res.data.ADDRESS);
+            $("#ifsc_code").html(res.data.IFSC);
+            $("#bank_micr").html(res.data['MICR CODE']);
         });
     });
 
