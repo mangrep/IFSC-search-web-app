@@ -1,13 +1,13 @@
 var banks = [];
 var branches = [];
-var url = "http://techm.co.in:3000/api";
+var url = "http://api.techm.co.in/api";
 var bankNameCheck;
 $(document).ready(function(){               
     
     
     // fetch the bank names if not found in localstorage
     if(localStorage.getItem("banks") === null){
-    $.get("http://techm.co.in:3000/api/listbanks",function(data,status) {
+    $.get("http://api.techm.co.in/api/listbanks",function(data,status) {
         
         if(status === "success"){
             banks = data.data;
