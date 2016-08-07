@@ -40,7 +40,7 @@ $(document).ready(function(){
             clearData();
         }
         if(bankName != bankNameCheck){
-            $.get(url+"/bank/"+$("#ifsc_bank").val(),function(data) {
+            $.get(url+"/listbranches/"+$("#ifsc_bank").val(),function(data) {
                 branches = data.data;
             });
         }
