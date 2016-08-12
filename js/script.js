@@ -1,13 +1,13 @@
 var banks = [];
 var branches = [];
-var url = "http://api.techm.co.in/api";
+var URL = "https://api.techm.co.in/api";
 var bankNameCheck;
 $(document).ready(function(){               
     
     
     // fetch the bank names if not found in localstorage
     if(localStorage.getItem("banks") === null){
-    $.get("http://api.techm.co.in/api/listbanks",function(data,status) {
+    $.get(URL+"/listbanks",function(data,status) {
         
         if(status === "success"){
             banks = data.data;
@@ -40,7 +40,7 @@ $(document).ready(function(){
             clearData();
         }
         if(bankName != bankNameCheck){
-            $.get(url+"/listbranches/"+$("#ifsc_bank").val(),function(data) {
+            $.get(URL+"/listbranches/"+$("#ifsc_bank").val(),function(data) {
                 branches = data.data;
             });
         }
@@ -88,7 +88,7 @@ $(document).ready(function(){
             alert("Enter Datails");
             return false;
         }
-        $.get(url+"/getbank/"+bank+"/"+branch,function(res) {
+        $.get(URL + "/getbank/"+bank+"/"+branch,function(res) {
             $("#bank_name").html(res.data.BANK);
             $("#bank_address").html(res.data.BANK);
             $("#address_line_1").html(res.data.CITY);
