@@ -3,12 +3,14 @@ var branches = [];
 var URL = "https://api.techm.co.in/api";
 var bankNameCheck;
 $(document).ready(function(){               
-    
+    $('#loading').hide() 
     
     // fetch the bank names if not found in localstorage
     if(localStorage.getItem("banks") === null){
+    $('#loading').show() 
     $.get(URL+"/listbanks",function(data,status) {
         
+        $('#loading').hide() 
         if(status === "success"){
             banks = data.data;
 						//save in localstorege
@@ -39,8 +41,10 @@ $(document).ready(function(){
             $("#ifsc_branch").removeAttr("readonly");
             clearData();
         }
+        $('#loading').show() 
         if(bankName != bankNameCheck){
             $.get(URL+"/listbranches/"+$("#ifsc_bank").val(),function(data) {
+                $('#loading').hide() 
                 branches = data.data;
             });
         }
@@ -88,7 +92,9 @@ $(document).ready(function(){
             alert("Enter Datails");
             return false;
         }
+        $('#loading').show() 
         $.get(URL + "/getbank/"+bank+"/"+branch,function(res) {
+           $('#loading').hide() 
             $("#bank_name").html(res.data.BANK);
             $("#bank_address").html(res.data.BANK);
             $("#address_line_1").html(res.data.CITY);
